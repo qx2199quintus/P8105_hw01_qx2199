@@ -1,0 +1,58 @@
+---
+title: "Homework 1"
+author: "Qianhui Xu"
+output: github_document
+---
+
+
+```{r, include = FALSE }
+library(tidyverse)
+```
+
+###Problem 1
+
+#Create a data frame with the specified elements. 
+
+```{r problem_one}
+prob1_df = 
+  tibble(
+   samp_numeric = rnorm(10, sd = 1),
+   samp_logical = samp_numeric > 0,
+   char_vec = c("A", "A", "B", "B", "A", "C", "B", "C", "C", "A"),
+  factor_vec = factor(c("high", "high", "mid", "mid", "high", "low", "mid", "low", "low", "high"))
+  )
+```
+
+#Means
+```{r means_var}
+mean(pull(prob1_df,samp_numeric))
+mean(pull(prob1_df, samp_logical))
+mean(pull(prob1_df, char_vec))
+mean(pull(prob1_df, factor_vec))
+```
+
+#What works and what doesn't?
+
+Take the mean of each variable in my data frame.I found that we could obtain the means for numeric vector and logical vector. However, we could not obtain the means for character vector, and factor vector. 
+
+#Convert
+
+```{r, eval = FALSE}
+as.numeric(pull(prob1_df, samp_logical))
+as.numeric(pull(prob1_df, char_vec))
+as.numeric(pull(prob1_df, factor_vec))
+```
+
+#What happens and why?
+
+The logical and factor variables can be converted to numeric variables. For logical variables which is stored as 0 (FALSE) and 1 (TRUE). Therefore, our "FALSE" could be converted to 0 ,our  "TRUE" could be converted to 1. For factor variables, elements could be converted to numeric integers.However, the character variable could not be converted to numeric variable.
+
+#Problem1,second code chunk
+
+```{r problem_one_second_chunk}
+as.numeric(pull(prob1_df, samp_logical)) * pull(prob1_df, samp_numeric)
+factor(pull(prob1_df, samp_logical)) * pull(prob1_df, samp_numeric)
+as.numeric(factor(pull(prob1_df, samp_logical))) * pull(prob1_df, samp_numeric)
+```
+
+###Problem 2
