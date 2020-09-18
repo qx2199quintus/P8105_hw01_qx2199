@@ -61,10 +61,11 @@ as.numeric(factor(pull(prob1_df, samp_logical))) * pull(prob1_df, samp_numeric)
 data("penguins", package = "palmerpenguins")
 ```
 #discription of the dataset
+
 `r summary(penguins)`
-`r str(penguins)`
 
 #variable name of the dataset
+
 
 #the size of the data set
 rows `r nrow(penguins)` 
@@ -82,11 +83,12 @@ the size `r nrow(penguins)`*`r ncol(penguins)`
 
 #create scatterplot and related labels
 
-ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm, color = species)) +geom_point() + ggtitle("Scatter plot")
+ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm, color = species)) + geom_point() + ggtitle("Scatter plot")
 
 #save the scatter plot
 
 ggsave("scatterplot_penguins.pdf", height = 4, width = 6)
+
 ```
 
 
