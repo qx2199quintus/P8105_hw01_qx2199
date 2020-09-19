@@ -51,8 +51,8 @@ The logical and factor variables can be converted to numeric variables. For logi
 
 ```{r problem_one_second_chunk}
 as.numeric(pull(prob1_df, samp_logical)) * pull(prob1_df, samp_numeric)
-factor(pull(prob1_df, samp_logical)) * pull(prob1_df, samp_numeric)
-as.numeric(factor(pull(prob1_df, samp_logical))) * pull(prob1_df, samp_numeric)
+as.factor(pull(prob1_df, samp_logical)) * pull(prob1_df, samp_numeric)
+as.numeric(as.factor(pull(prob1_df, samp_logical))) * pull(prob1_df, samp_numeric)
 ```
 
 ###Problem 2
@@ -64,19 +64,14 @@ data("penguins", package = "palmerpenguins")
 
 `r summary(penguins)`
 
-#variable name of the dataset
-
 
 #the size of the data set
-rows `r nrow(penguins)` 
-columns `r ncol(penguins)`
-the size `r nrow(penguins)`*`r ncol(penguins)`
+There are `r nrow(penguins)` and `r ncol(penguins)`columns in this dataset.As we can see, there are 8 variables.
+The size of the dataset is `r nrow(penguins)`*`r ncol(penguins)`.
+
 
 #the mean flipper length
-`r mean(pull(penguins, flipper_length_mm), na.rm = TRUE)` .
-
-#the median weight 
-`r median(pull(penguins, body_mass_g), na.rm = TRUE)`. 
+The mean flipper length is `r mean(pull(penguins, flipper_length_mm), na.rm = TRUE)` mm.
 
 #scatterplot and save
 ```{r scatterplot_penguins}
@@ -85,9 +80,9 @@ the size `r nrow(penguins)`*`r ncol(penguins)`
 
 ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm, color = species)) + geom_point() + ggtitle("Scatter plot")
 
-#save the scatter plot
+#save and export the scatter plot
 
-ggsave("scatterplot_penguins.pdf", height = 4, width = 6)
+ggsave("scatterplot_penguins.pdf", height = 4, width = 4)
 
 ```
 
