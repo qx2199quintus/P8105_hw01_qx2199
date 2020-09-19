@@ -45,7 +45,7 @@ as.numeric(pull(prob1_df, factor_vec))
 
 #What happens and why?
 
-The logical and factor variables can be converted to numeric variables. For logical variables which is stored as 0 (FALSE) and 1 (TRUE). Therefore, our "FALSE" could be converted to 0 ,our  "TRUE" could be converted to 1. For factor variables, elements could be converted to numeric integers.However, the character variable could not be converted to numeric variable.
+The logical and factor variables can be converted to numeric variables. It' because the logical variables could be stored as 0 (FALSE) and 1 (TRUE). Therefore,  the "FALSE" could be converted to 0  and  "TRUE" could be converted to 1. For factor variables, the elements could be converted to numeric integers. However, the character variable could not be converted to numeric variable.
 
 #Problem1,second code chunk
 
@@ -62,15 +62,12 @@ data("penguins", package = "palmerpenguins")
 ```
 #discription of the dataset
 
-`r summary(penguins)`
+The discription of the data could be seen in `r summary(penguins)`, and the variable names are: `r names(penguins)`.  
 
+There are `r nrow(penguins)` and `r ncol(penguins)`columns in this dataset. As we can see, there are 8 variables.
 
-#the size of the data set
-There are `r nrow(penguins)` and `r ncol(penguins)`columns in this dataset.As we can see, there are 8 variables.
 The size of the dataset is `r nrow(penguins)`*`r ncol(penguins)`.
 
-
-#the mean flipper length
 The mean flipper length is `r mean(pull(penguins, flipper_length_mm), na.rm = TRUE)` mm.
 
 #scatterplot and save
@@ -82,7 +79,7 @@ ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm, color = species)
 
 #save and export the scatter plot
 
-ggsave("scatterplot_penguins.pdf", height = 4, width = 4)
+ggsave("scatterplot_penguins.pdf", height = 4, width = 4) 
 
 ```
 
