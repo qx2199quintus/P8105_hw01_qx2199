@@ -37,7 +37,7 @@ Take the mean of each variable in my data frame.I found that we could obtain the
 
 #Convert
 
-```{r, eval = FALSE}
+```{r prob_convert, eval = FALSE}
 as.numeric(pull(prob1_df, samp_logical))
 as.numeric(pull(prob1_df, char_vec))
 as.numeric(pull(prob1_df, factor_vec))
@@ -45,7 +45,9 @@ as.numeric(pull(prob1_df, factor_vec))
 
 #What happens and why?
 
-The logical and factor variables can be converted to numeric variables. It' because the logical variables could be stored as 0 (FALSE) and 1 (TRUE). Therefore,  the "FALSE" could be converted to 0  and  "TRUE" could be converted to 1. For factor variables, the elements could be converted to numeric integers. However, the character variable could not be converted to numeric variable.
+The logical variable and factor variable  can be converted to numeric variables. It' because the logical variables could be stored as 0 (FALSE) and 1 (TRUE). Therefore,  the "FALSE" could be converted to 0  and  "TRUE" could be converted to 1. 
+For factor variables, the elements could be converted to the numeric codes that correspond to the factor levels. Because factor vector contains and stores a set of numeric codes with character-valued levels. 
+However, the character variable could not be converted to numeric variable.Because character variable contains string values, which could not be converted to numeric values.
 
 #Problem1,second code chunk
 
