@@ -16,7 +16,7 @@ library(tidyverse)
 ```{r problem_one}
 prob1_df = 
   tibble(
-   samp_numeric = rnorm(10, sd = 1),
+   samp_numeric = rnorm(10),
    samp_logical = samp_numeric > 0,
    char_vec = c("A", "A", "B", "B", "A", "C", "B", "C", "C", "A"),
   factor_vec = factor(c("high", "high", "mid", "mid", "high", "low", "mid", "low", "low", "high"))
@@ -46,8 +46,13 @@ as.numeric(pull(prob1_df, factor_vec))
 #What happens and why?
 
 The logical variable and factor variable  can be converted to numeric variables. It' because the logical variables could be stored as 0 (FALSE) and 1 (TRUE). Therefore,  the "FALSE" could be converted to 0  and  "TRUE" could be converted to 1. 
-For factor variables, the elements could be converted to the numeric codes that correspond to the factor levels. Because factor vector contains and stores a set of numeric codes with character-valued levels. 
-However, the character variable could not be converted to numeric variable.Because character variable contains string values, which could not be converted to numeric values.
+
+For factor variables, the elements could be converted to the numeric codes that correspond to the factor levels.(in our sample, we have 3 levels) Because factor vector contains and stores a set of numeric codes with character-valued levels. 
+
+However, the character variable could not be converted to numeric variable.Because character variable contains characters, which could not be converted to numeric values.
+
+Yes, this could help me to explain what happens when I try to make the mean. Because numeric and logical variables are stored as numeric values.We could therefore obtain their mean values. However, the factor variables could be converted to numeric variables but after the convertion, we could not obtain the mean value before convertion. The character variables contains characters and we could not obtain the mean from it.
+
 
 #Problem1,second code chunk
 
@@ -65,6 +70,12 @@ data("penguins", package = "palmerpenguins")
 #discription of the dataset
 
 The discription of the data could be seen in `r summary(penguins)`, and the variable names are: `r names(penguins)`.  
+
+#names / values of important variables
+
+The median of the body mass is `r median(pull(penguins, body_mass_g), na.rm = TRUE)`, the range for bill depth is`r  range(pull(penguins, bill_depth_mm), na.rm = TRUE)`.the range for bill length is`r  range(pull(penguins, bill_length_mm), na.rm = TRUE)`.
+The penguins are from `r nlevels(pull(penguins, island))` islands. The names of each island are `r levels(pull(penguins, island))`.There are  `r nlevels(pull(penguins, species))` penguin species. The names of each species are `r levels(pull(penguins, species))`.
+
 
 There are `r nrow(penguins)` and `r ncol(penguins)`columns in this dataset. As we can see, there are 8 variables.
 
