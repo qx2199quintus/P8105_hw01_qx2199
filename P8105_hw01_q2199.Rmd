@@ -9,9 +9,9 @@ output: github_document
 library(tidyverse)
 ```
 
-###Problem 1
+# Problem 1
 
-#Create a data frame with the specified elements. 
+## Create a data frame with the specified elements. 
 
 ```{r problem_one}
 prob1_df = 
@@ -23,7 +23,7 @@ prob1_df =
   )
 ```
 
-#Means
+## Means
 ```{r means_var}
 mean(pull(prob1_df,samp_numeric))
 mean(pull(prob1_df, samp_logical))
@@ -31,9 +31,9 @@ mean(pull(prob1_df, char_vec))
 mean(pull(prob1_df, factor_vec))
 ```
 
-#What works and what doesn't?
+## What works and what doesn't?
 
-Take the mean of each variable in my data frame.I found that we could obtain the means for numeric vector and logical vector. However, we could not obtain the means for character vector, and factor vector. 
+Take the mean of each variable in my data frame.I found that we could obtain the means for numeric and logical variables. However, we could not obtain the means for character variable, and factor variable. 
 
 #Convert
 
@@ -43,7 +43,7 @@ as.numeric(pull(prob1_df, char_vec))
 as.numeric(pull(prob1_df, factor_vec))
 ```
 
-#What happens and why?
+## What happens and why?
 
 The logical variable and factor variable  can be converted to numeric variables. It' because the logical variables could be stored as 0 (FALSE) and 1 (TRUE). Therefore,  the "FALSE" could be converted to 0  and  "TRUE" could be converted to 1. 
 
@@ -54,7 +54,7 @@ However, the character variable could not be converted to numeric variable.Becau
 Yes, this could help me to explain what happens when I try to make the mean. Because numeric and logical variables are stored as numeric values.We could therefore obtain their mean values. However, the factor variables could be converted to numeric variables but after the convertion, we could not obtain the mean value before convertion. The character variables contains characters and we could not obtain the mean from it.
 
 
-#Problem1,second code chunk
+## Problem1,second code chunk
 
 ```{r problem_one_second_chunk}
 as.numeric(pull(prob1_df, samp_logical)) * pull(prob1_df, samp_numeric)
@@ -62,28 +62,25 @@ as.factor(pull(prob1_df, samp_logical)) * pull(prob1_df, samp_numeric)
 as.numeric(as.factor(pull(prob1_df, samp_logical))) * pull(prob1_df, samp_numeric)
 ```
 
-###Problem 2
+# Problem 2
 
 ```{r}
 data("penguins", package = "palmerpenguins")
+summary(penguins)
 ```
-#discription of the dataset
+## Discription of the dataset
 
-The discription of the data could be seen in `r summary(penguins)`, and the variable names are: `r names(penguins)`.  
-
-#names / values of important variables
+The variable names are: `r names(penguins)`
 
 The median of the body mass is `r median(pull(penguins, body_mass_g), na.rm = TRUE)`, the range for bill depth is`r  range(pull(penguins, bill_depth_mm), na.rm = TRUE)`.the range for bill length is`r  range(pull(penguins, bill_length_mm), na.rm = TRUE)`.
 The penguins are from `r nlevels(pull(penguins, island))` islands. The names of each island are `r levels(pull(penguins, island))`.There are  `r nlevels(pull(penguins, species))` penguin species. The names of each species are `r levels(pull(penguins, species))`.
 
 
-There are `r nrow(penguins)` and `r ncol(penguins)`columns in this dataset. As we can see, there are 8 variables.
-
-The size of the dataset is `r nrow(penguins)`*`r ncol(penguins)`.
+There are `r nrow(penguins)`rows and `r ncol(penguins)`columns in this dataset, and The size of the dataset is `r nrow(penguins)*ncol(penguins)`.
 
 The mean flipper length is `r mean(pull(penguins, flipper_length_mm), na.rm = TRUE)` mm.
 
-#scatterplot and save
+## Scatterplot and save
 ```{r scatterplot_penguins}
 
 #create scatterplot and related labels
